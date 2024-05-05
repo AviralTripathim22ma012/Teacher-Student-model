@@ -1,43 +1,49 @@
-## Concept:
-A particular kind of neural network architecture known as a "teacher-student 
-network" includes teaching a smaller, simpler network (the student) to replicate 
-the behaviour of a more complicated, larger network (the teacher). Although the 
-student network is trained on the same task as the teacher network, it is trained 
-to learn from the intermediate representations of the teacher network, which are 
-used as "hints" or "soft targets," rather than directly attempting to minimise the 
-prediction error. This process is called knowledge distillation.<br>
-The following are some advantages of using a teacher-student network:
- Training becomes faster and more effective when the student network 
-learns from the intermediate representations of the teacher network rather 
-than starting from scratch.<br>
- Improved generalisation: By minimising overfitting and enhancing the 
-generalisation capabilities of the student network, the instructor network 
-can provide a regularisation impact.<br>
- Model compression: The student network is often simpler and smaller than 
-the teacher network, which increases its computational efficiency and 
-makes it simpler to implement in contexts with limited resources. <br>
-## Choice of Hyperparameters
-I used the following hyperparameters for training the teacher model: <br>
-**optimizer = optim.Adam(teacher_net.parameters(), lr=0.001)**
-<br>
-Faster convergence: Adam's adjustable learning rate can result in faster 
-convergence and improved optimisation performance, especially 
-Robustness: robustness to the selection of hyperparameters like learning rate.
-Reduced memory requirements: Adam is more memory-efficient for largescale issues, as it does not require the recording of the whole gradient history 
-for each parameter. <br>
-**criterion = nn.CrossEntropyLoss()**
-<br>
-It works well for classification issues: For classification issues with 
-numerous classes, cross entropy loss works very effectively. It severely 
-penalises the model for giving the wrong classes high probability while 
-rewarding it for giving the right class high probability.
-It is distinct and simple to optimise: Since the cross entropy loss function is 
-differentiable with respect to the predicted probabilities, gradient descent 
-or other gradient-based optimisation methods can be used to optimise it. <br>
-**batch size= 1024&epochs= 5:**
-<br>
-I have chosen a larger batch for a faster training, as the tiny 
-ImageNet dataset has over 100,000 images, so it takes a lot of 
-time to train
-Previously I used the batch size= 100, but it was taking too long to 
-train
+# Teacher-Student Network: Knowledge Distillation
+
+![Teacher-Student Network](https://img.shields.io/badge/Teacher--Student%20Network-Knowledge%20Distillation-blue.svg)
+![Neural Network](https://img.shields.io/badge/Architecture-Neural%20Network-yellow.svg)
+![Advantages](https://img.shields.io/badge/Advantages-Model%20Compression%2C%20Generalisation-green.svg)
+
+Welcome to the Teacher-Student Network project repository! This project focuses on implementing a neural network architecture known as a "teacher-student network" and utilizing the technique of knowledge distillation.
+
+## Overview
+
+In a teacher-student network, a smaller, simpler network (the student) is trained to replicate the behavior of a larger, more complex network (the teacher). The student network learns from the intermediate representations of the teacher network, which are used as "hints" or "soft targets," rather than directly minimizing the prediction error. This process is known as knowledge distillation.
+
+## Advantages
+
+Some advantages of using a teacher-student network include:
+
+- **Faster Training**: The student network learns faster and more effectively by leveraging the intermediate representations of the teacher network, rather than starting from scratch.
+- **Improved Generalization**: Knowledge distillation helps in minimizing overfitting and enhancing the generalization capabilities of the student network by incorporating regularization effects from the teacher network.
+- **Model Compression**: The student network is typically simpler and smaller than the teacher network, leading to increased computational efficiency and making it easier to implement in resource-constrained environments.
+
+## Implementation Details
+
+- **Neural Network Architecture**: Implement a teacher-student network architecture, with the teacher network providing soft targets for the student network during training.
+- **Knowledge Distillation**: Train the student network to mimic the behavior of the teacher network by learning from its intermediate representations.
+
+## Usage
+
+Feel free to explore the implementation provided in this repository. The project includes scripts for training the teacher-student network and evaluating its performance on various tasks.
+
+## Requirements
+
+- Python 3.x
+- TensorFlow or PyTorch (depending on your preference)
+- NumPy
+- matplotlib (for visualization)
+
+## Contributing
+
+Contributions to this project are welcome! If you have ideas for improvements or new features, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+If you find this project helpful or interesting, consider giving it a ⭐️!
+
+[![GitHub stars](https://img.shields.io/github/stars/AviralTripathim22ma012/Teacher-Student-model.svg?style=social&label=Star)](https://github.com/AviralTripathim22ma012/Teacher-Student-model)
